@@ -1,0 +1,284 @@
+.hero {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 70% 55% at 8% 85%, rgba(34, 100, 44, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 92% 8%, rgba(20, 90, 35, 0.4) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 35% at 55% 45%, rgba(10, 55, 20, 0.25) 0%, transparent 60%),
+    #0f1f12;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero.dragging {
+  background: #162a19;
+}
+
+/* ── Noise texture ── */
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ── Background real plant photos ── */
+.bgDecor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.leaf {
+  position: absolute;
+  height: auto;
+  mix-blend-mode: screen;
+  filter: saturate(1.2) brightness(0.8);
+  animation: floatLeaf 9s ease-in-out infinite;
+}
+
+.leaf1 {
+  width: 260px;
+  top: -40px;
+  left: -50px;
+  transform: rotate(-18deg);
+  opacity: 0.55;
+  animation-duration: 9s;
+  --r: -18deg;
+}
+.leaf2 {
+  width: 200px;
+  top: 5%;
+  right: -40px;
+  transform: rotate(-44deg);
+  opacity: 0.45;
+  animation-duration: 11s;
+  animation-delay: -3s;
+  --r: -44deg;
+}
+.leaf3 {
+  width: 170px;
+  bottom: -130px;
+  left: 2%;
+  transform: rotate(12deg);
+  opacity: 0.4;
+  animation-duration: 7.5s;
+  animation-delay: -1.5s;
+  --r: 12deg;
+}
+.leaf4 {
+  width: 300px;
+  bottom: -60px;
+  right: -60px;
+  transform: rotate(-8deg);
+  opacity: 0.5;
+  animation-duration: 13s;
+  animation-delay: -5s;
+  --r: -8deg;
+}
+.leaf5 {
+  width: 190px;
+  top: 364px;
+  left: 57px;
+  transform: rotate(-45deg);
+  opacity: 0.35;
+  animation-duration: 10s;
+  animation-delay: -2.5s;
+  --r: -45deg;
+}
+.leaf6 {
+  width: 150px;
+  top: 306px;
+  right: 120px;
+  transform: rotate(-142deg);
+  opacity: 0.38;
+  animation-duration: 8.5s;
+  animation-delay: -4s;
+  --r: -142deg;
+}
+
+@keyframes floatLeaf {
+  0%, 100% { transform: translateY(0px) rotate(var(--r, 0deg)); }
+  33%       { transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 2.5deg)); }
+  66%       { transform: translateY(7px) rotate(calc(var(--r, 0deg) - 1.5deg)); }
+}
+
+/* ── Main content ── */
+.content {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 680px;
+}
+
+/* ── Logo ── */
+/* ── Heading ── */
+.heading {
+  display: block;
+  font-size: clamp(52px, 9vw, 96px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+
+.headingLine1 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.headingLine2 {
+  color: #ffffff;
+  line-height: 1;
+  background: linear-gradient(135deg, #a8e6b0 0%, #5cb868 40%, #3a7d44 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Subheading ── */
+.subheading {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+  margin-bottom: 32px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(#4a9155, #3a7d44);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 0px 1px inset;
+  transition: filter 0.15s;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+}
+
+.btn:active {
+  filter: brightness(0.95);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cameraBtn {
+  display: none;
+}
+
+.dropHint {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: -0.2px;
+}
+
+/* Touch devices (phones/tablets): camera is primary, upload becomes secondary */
+@media (hover: none) and (pointer: coarse) {
+  .cameraBtn {
+    display: inline-flex;
+  }
+
+  .uploadBtn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: none;
+  }
+
+  .dropHint {
+    display: none;
+  }
+}
+
+/* Very narrow phones: stack full-width, primary (camera) on top */
+@media (hover: none) and (pointer: coarse) and (max-width: 379px) {
+  .buttons {
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    align-self: stretch;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+.btnSpinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Drop overlay ── */
+.dropOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 125, 68, 0.15);
+  border: 3px dashed rgba(58, 125, 68, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #7ecf86;
+  z-index: 10;
+  pointer-events: none;
+  font-size: 18px;
+  font-weight: 600;
+  backdrop-filter: blur(2px);
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .leaf1, .leaf4, .leaf5 { display: none; }
+  .leaf2 { width: 140px; height: 180px; }
+  .leaf3 { width: 120px; height: 160px; }
+  .leaf6 { width: 110px; height: 140px; }
+  .btn { width: auto; }
+}

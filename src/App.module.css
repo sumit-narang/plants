@@ -1,0 +1,72 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.headerInner {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tryAnotherBtn {
+  height: 36px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(#4a9155, #3a7d44);
+  border: none;
+  cursor: pointer;
+  letter-spacing: -0.3px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 0px 1px inset;
+  transition: filter 0.15s;
+}
+
+.tryAnotherBtn:hover {
+  filter: brightness(1.08);
+}
+
+.logoBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.15s;
+  display: flex;
+  align-items: center;
+}
+
+.logoBtn:hover {
+  opacity: 0.75;
+}
+
+
+.main {
+  flex: 1;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 104px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
