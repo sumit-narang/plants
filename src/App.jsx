@@ -59,8 +59,8 @@ export default function App() {
     <div className={styles.app}>
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <button className={styles.logoBtn} onClick={handleReset}>
-            <img src={import.meta.env.BASE_URL + 'logoFull.svg'} alt="Leaffy" height={28} />
+          <button className={styles.backBtn} onClick={handleReset} aria-label="Back">
+            <img src={import.meta.env.BASE_URL + 'back.svg'} alt="" width={24} height={24} />
           </button>
           <button className={styles.tryAnotherBtn} onClick={() => fileInputRef.current.click()}>New photo</button>
           <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={e => { if (e.target.files[0]) handleImage(e.target.files[0]); e.target.value = '' }} />

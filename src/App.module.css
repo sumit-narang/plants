@@ -44,18 +44,21 @@
   filter: brightness(1.08);
 }
 
-.logoBtn {
+.backBtn {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  transition: opacity 0.15s;
+  /* 40px tap target, pulled left so the arrow lines up with the page edge */
+  padding: 8px;
+  margin-left: -8px;
+  border-radius: 10px;
+  transition: background 0.15s;
   display: flex;
   align-items: center;
 }
 
-.logoBtn:hover {
-  opacity: 0.75;
+.backBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 
