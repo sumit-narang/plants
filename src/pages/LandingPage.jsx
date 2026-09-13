@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { isHeic, convertHeicToJpeg } from '../utils/heic'
+import CameraCapture from '../components/CameraCapture'
 import styles from './LandingPage.module.css'
 
 const BASE = import.meta.env.BASE_URL
@@ -13,6 +14,17 @@ export default function LandingPage({ onImage }) {
   const cameraInputRef = useRef(null)
   const [converting, setConverting] = useState(false)
   const [fileDragging, setFileDragging] = useState(false)
+  const [showCamera, setShowCamera] = useState(false)
+
+  // Phones/tablets open the native camera; desktops get a live webcam preview
+  function handleTakePhoto() {
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    if (isTouch || !navigator.mediaDevices?.getUserMedia) {
+      cameraInputRef.current.click()
+    } else {
+      setShowCamera(true)
+    }
+  }
 
   async function handleFiles(files) {
     let file = files[0]
@@ -85,10 +97,9 @@ export default function LandingPage({ onImage }) {
               )}
             </button>
 
-            {/* Camera button: touch devices only (the capture attribute does nothing on desktop) */}
             <button
-              className={`${styles.btn} ${styles.cameraBtn}`}
-              onClick={() => cameraInputRef.current.click()}
+              className={styles.btn}
+              onClick={handleTakePhoto}
               disabled={converting}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -121,6 +132,14 @@ export default function LandingPage({ onImage }) {
         style={{ display: 'none' }}
         onChange={e => { handleFiles(e.target.files); e.target.value = '' }}
       />
+
+      {showCamera && (
+        <CameraCapture
+          onCapture={file => { setShowCamera(false); onImage(file) }}
+          onClose={() => setShowCamera(false)}
+          onFallback={() => uploadInputRef.current.click()}
+        />
+      )}
 
       {fileDragging && (
         <div className={styles.dropOverlay}>

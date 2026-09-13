@@ -202,8 +202,11 @@
   cursor: not-allowed;
 }
 
-.cameraBtn {
-  display: none;
+/* Upload is the secondary action everywhere; Take a photo is primary */
+.uploadBtn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: none;
 }
 
 .dropHint {
@@ -212,25 +215,15 @@
   letter-spacing: -0.2px;
 }
 
-/* Touch devices (phones/tablets): camera is primary, upload becomes secondary */
+/* Drag-and-drop is a desktop thing — hide the hint on touch devices */
 @media (hover: none) and (pointer: coarse) {
-  .cameraBtn {
-    display: inline-flex;
-  }
-
-  .uploadBtn {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: none;
-  }
-
   .dropHint {
     display: none;
   }
 }
 
-/* Very narrow phones: stack full-width, primary (camera) on top */
-@media (hover: none) and (pointer: coarse) and (max-width: 379px) {
+/* Very narrow screens: stack full-width, primary (camera) on top */
+@media (max-width: 379px) {
   .buttons {
     flex-direction: column-reverse;
     flex-wrap: nowrap;

@@ -1,0 +1,88 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 14, 9, 0.8);
+  backdrop-filter: blur(6px);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.viewfinder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: calc(100vh - 140px);
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlayText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  transition: filter 0.15s;
+}
+
+.btn:hover { filter: brightness(1.08); }
+.btn:active { filter: brightness(0.95); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.primary {
+  background: linear-gradient(#4a9155, #3a7d44);
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 0px 1px inset;
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
