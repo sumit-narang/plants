@@ -276,9 +276,22 @@
 
 /* ── Mobile ── */
 @media (max-width: 480px) {
-  .leaf1, .leaf4, .leaf5 { display: none; }
-  .leaf2 { width: 140px; height: 180px; }
-  .leaf3 { width: 120px; height: 160px; }
-  .leaf6 { width: 110px; height: 140px; }
+  /* Same arrangement as desktop — 3 leaves down each edge, tucked partly off-screen */
+  /* Left: top, middle, bottom */
+  .leaf1 { width: 170px; top: -40px; left: -70px; right: auto; bottom: auto; }
+  .leaf5 { width: 110px; top: 64%; left: -52px; right: auto; bottom: auto; }
+  .leaf3 { width: 120px; bottom: -70px; left: -20px; right: auto; top: auto; }
+  /* Right: top, middle, bottom */
+  .leaf2 { width: 140px; top: 4%; right: -45px; left: auto; bottom: auto; }
+  .leaf6 { width: 95px; top: 58%; right: -36px; left: auto; bottom: auto; }
+  .leaf4 { width: 190px; bottom: -60px; right: -75px; left: auto; top: auto; }
   .btn { width: auto; }
+}
+
+/* Short phones (e.g. iPhone SE): less vertical room, so tuck the lower leaves further off-screen */
+@media (max-width: 480px) and (max-height: 720px) {
+  .leaf5 { width: 100px; top: 73%; left: -58px; }
+  .leaf6 { width: 88px; top: 66%; right: -44px; }
+  .leaf3 { bottom: -100px; }
+  .leaf4 { bottom: -105px; }
 }
